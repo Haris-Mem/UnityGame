@@ -1,0 +1,16 @@
+﻿[
+  {
+    "uid": "q-1",
+    "title": "Annoying Bandits!",
+    "description": "Deafeat two bandits located south of the camp",
+    "experience": 100,
+    "gold": 5,
+    "amount": 2,
+    "targets": [
+    ],
+    "talkTo": null,
+    "explore": null,
+    "questGiver": "72859c03-639f-489a-850e-3a26092861eb",
+    "type": 0
+  }
+]
