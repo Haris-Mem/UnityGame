@@ -1113,6 +1113,7 @@ GameObject:
   - component: {fileID: 2639511633445042387}
   - component: {fileID: 519095886275668298}
   - component: {fileID: 1270732525}
+  - component: {fileID: 2073430390}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -1287,6 +1288,19 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &2073430390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085003126673064119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12202af72c0967b41967eedc187a2416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 0}
 --- !u!1 &4085005450615994823
 GameObject:
   m_ObjectHideFlags: 0
@@ -5224,6 +5238,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4927973787200604, guid: 7e6e29f21a00d5f499e21eb93d6fabaa, type: 3}
   m_PrefabInstance: {fileID: 5533903052468757069}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1496388004633985001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533150106769340497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa6e05ba95778548b39cd7fb88e1f81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitAngle: 360
+  maxHP: 50
+  onDamageMessageReceivers:
+  - {fileID: 1947130790383476701}
+  invulnerabilityTime: 0.5
+--- !u!114 &1947130790383476701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533150106769340497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83fba6bc142ca6d4abbcbc9a216aa178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScanner:
+    meleeDetectionRadius: 2
+    detectionRadius: 10
+    detectionAngle: 90
+  timeToStopPursuit: 0.5
+  timeToWaitOnPursuit: 2
+  attackDistance: 1.1
+--- !u!114 &5062633312272720795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533150106769340497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749f464dd16db8d41886aae006ff9327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &5866570393365138539
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5246,54 +5308,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1496388004633985001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533150106769340497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa6e05ba95778548b39cd7fb88e1f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitAngle: 360
-  maxHP: 50
-  onDamageMessageReceivers:
-  - {fileID: 1947130790383476701}
-  invulnerabilityTime: 0.5
---- !u!114 &5062633312272720795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533150106769340497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 749f464dd16db8d41886aae006ff9327, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1947130790383476701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533150106769340497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83fba6bc142ca6d4abbcbc9a216aa178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerScanner:
-    meleeDetectionRadius: 2
-    detectionRadius: 10
-    detectionAngle: 90
-  timeToStopPursuit: 0.5
-  timeToWaitOnPursuit: 2
-  attackDistance: 1.1
 --- !u!1001 &8753447375234042483
 PrefabInstance:
   m_ObjectHideFlags: 0

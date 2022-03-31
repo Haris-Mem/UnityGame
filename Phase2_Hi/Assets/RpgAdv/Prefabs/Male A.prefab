@@ -2388,6 +2388,7 @@ GameObject:
   - component: {fileID: -1262103743506253364}
   - component: {fileID: 5581772799761194921}
   - component: {fileID: 5938974913091194480}
+  - component: {fileID: 284382440}
   m_Layer: 6
   m_Name: Male A
   m_TagString: Untagged
@@ -2574,6 +2575,19 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &284382440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5644781040899114360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12202af72c0967b41967eedc187a2416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 3038683442629081216, guid: a017581ac30997d4aaa7a0365bad9378, type: 3}
 --- !u!1 &5644783509189081316
 GameObject:
   m_ObjectHideFlags: 0
