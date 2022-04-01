@@ -1114,6 +1114,7 @@ GameObject:
   - component: {fileID: 519095886275668298}
   - component: {fileID: 1270732525}
   - component: {fileID: 2073430390}
+  - component: {fileID: 1006309442495886202}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Untagged
@@ -1300,7 +1301,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12202af72c0967b41967eedc187a2416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ragdollPrefab: {fileID: 0}
+  ragdollPrefab: {fileID: 3959915112211633886, guid: 4fde151939e27e5449023893b903cddf, type: 3}
+--- !u!114 &1006309442495886202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4085003126673064119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0870af585eda6fa489ec0274d444ebed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Uid: 2a935acf-7120-434a-8f70-4e704f698185
 --- !u!1 &4085005450615994823
 GameObject:
   m_ObjectHideFlags: 0

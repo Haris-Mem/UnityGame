@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace RpgAdventure
+namespace RpgAdv
 {
     public enum QuestType
     {

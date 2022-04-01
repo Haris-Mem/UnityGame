@@ -7,10 +7,25 @@
     "gold": 5,
     "amount": 2,
     "targets": [
+      "08cce553-053e-4d7a-809a-68b5900fd1aa",
+      "24755702-8208-46c7-86c1-2df399125fcf"
     ],
     "talkTo": null,
     "explore": null,
-    "questGiver": "72859c03-639f-489a-850e-3a26092861eb",
+    "questGiver": "c3be459c-4bc8-4ed7-acbf-9fdf5d0ba999",
+    "type": 0
+  },
+  {
+    "uid": "q-2",
+    "title": "Defeat the Bandit Leader!",
+    "description": "Deafeat bandit leader located noth of the camp",
+    "experience": 200,
+    "gold": 15,
+    "amount": 1,
+    "targets": [ "24755702-8208-46c7-86c1-2df399125fcf" ],
+    "talkTo": null,
+    "explore": null,
+    "questGiver": "c3be459c-4bc8-4ed7-acbf-9fdf5d0ba999",
     "type": 0
   }
 ]

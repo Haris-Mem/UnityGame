@@ -68,3 +68,32 @@ PrefabInstance:
     - {fileID: 4670628426511904205, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
     - {fileID: 4670628426511904204, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
+--- !u!1 &8328272708348872982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4672219392913966090, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
+  m_PrefabInstance: {fileID: 3694351577811979548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &639205484387457267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328272708348872982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d164e57864e966419091cbd7f73e19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    uid: 
+    title: 
+    description: 
+    experience: 0
+    gold: 0
+    amount: 0
+    targets: []
+    talkTo: 
+    explore: {x: 0, y: 0, z: 0}
+    questGiver: 
+    type: 0
