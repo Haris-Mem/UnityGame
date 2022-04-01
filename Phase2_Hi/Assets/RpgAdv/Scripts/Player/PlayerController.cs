@@ -9,6 +9,7 @@ namespace RpgAdv
 
     public class PlayerController : MonoBehaviour, IAttackAnimListener
     {
+        private CharacterController con;
         public static PlayerController Instance
         {
             get
@@ -21,6 +22,10 @@ namespace RpgAdv
         public float speed;
         public float maxForwardSpeed;
         public float rotationSpeed;
+
+        private float verticalVelocity;
+        private float gravity = 10.0f;
+        private float jumpForce = 15.0f;
 
         private static PlayerController s_Instance;
         private PlayerInput playerInput;
@@ -36,7 +41,7 @@ namespace RpgAdv
         
         public float maxRotationSpeed = 1200;
         public float minRotationSpeed = 800;
-        public float gravity = 20.0f;
+        
         
 
         private readonly int HashForwardSpeed = Animator.StringToHash("ForwardSpeed");
@@ -45,8 +50,15 @@ namespace RpgAdv
         
         const float acceleration = 20;
         const float deacceleration = 535;
+
+        private void Start()
+        {
+            
+        }
+
         private void Awake()
         {
+            con = GetComponent<CharacterController>();
             charController = GetComponent<CharacterController>();
             mainCameraController = Camera.main.GetComponent<CameraController>();
             animator = GetComponent<Animator>();
@@ -64,6 +76,8 @@ namespace RpgAdv
            ComputeForwardMovement();
            ComputeVerticalMovement();
            ComputeRotation();
+           jumpCheck();
+           
 
            if (playerInput.isMoveInput)
            {
@@ -78,27 +92,7 @@ namespace RpgAdv
                animator.SetTrigger(HashMeleeAttack);
                
            }
-           // OLD CAMERA CODE
-            /* Vector3 dir = Vector3.zero;
-            dir.x = Input.GetAxis("Horizontal");
-            dir.z = Input.GetAxis("Vertical");
-
-            if (dir == Vector3.zero)
-            {
-                return;
-            }
-
-            Vector3 camDirection = cam.transform.rotation * dir;
-            Vector3 targetDirection = new Vector3(camDirection.x, 0, camDirection.z);
-
-            if (dir.z >= 0)
-            {
-                transform.rotation = Quaternion.Slerp(
-                    transform.rotation,
-                    Quaternion.LookRotation(targetDirection),
-                    0.09f);
-            }
-            rb.MovePosition(rb.position + targetDirection.normalized * speed * Time.fixedDeltaTime);*/
+           
         }
 
         private void ComputeForwardMovement()
@@ -138,6 +132,27 @@ namespace RpgAdv
         {
             verticalSpeed = -gravity;
         }
+
+        private void jumpCheck()
+        {
+            if (con.isGrounded)
+            {
+                verticalVelocity = -gravity * Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    verticalVelocity = jumpForce;
+                }
+            }
+            else
+            {
+                verticalVelocity -= gravity * Time.deltaTime;
+            }
+
+            Vector3 moveVector = new Vector3(0, verticalVelocity, 0);
+            con.Move(moveVector * Time.deltaTime);
+            
+        }
+        
 
         private void ComputeRotation()
         {
