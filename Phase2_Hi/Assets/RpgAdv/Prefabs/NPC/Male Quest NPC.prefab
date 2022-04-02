@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Male Quest NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4672219392913966090, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
+      propertyPath: m_TagString
+      value: QuestGiver
+      objectReference: {fileID: 0}
     - target: {fileID: 4721399135667421592, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
       propertyPath: m_Controller
       value: 
@@ -73,6 +77,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4672219392913966090, guid: 36bb58ceb7ee069419d3b18635345546, type: 3}
   m_PrefabInstance: {fileID: 3694351577811979548}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8727687047176445126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8328272708348872982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461f181db1f3ac244b584603391a8053, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionCursor: {fileID: 2800000, guid: 1e4d9ae75998d364f82b974940e5044e, type: 3}
+  cursorMode: 0
 --- !u!114 &639205484387457267
 MonoBehaviour:
   m_ObjectHideFlags: 0

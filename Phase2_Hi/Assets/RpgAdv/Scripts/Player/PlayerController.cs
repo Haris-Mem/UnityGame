@@ -79,7 +79,7 @@ namespace RpgAdv
            jumpCheck();
            
 
-           if (playerInput.isMoveInput)
+           if (playerInput.IsMoveInput)
            {
                float rotationSpeed = Mathf.Lerp(maxRotationSpeed, minRotationSpeed, forwardSpeed / desiredForwardSpeed);
                targetRotation1 = Quaternion.RotateTowards(transform.rotation, targetRotation1, rotationSpeed * Time.deltaTime); 
@@ -101,7 +101,7 @@ namespace RpgAdv
 
             desiredForwardSpeed = moveInput.magnitude * maxForwardSpeed;
 
-            float acceleration = playerInput.isMoveInput ? PlayerController.acceleration : deacceleration;
+            float acceleration = playerInput.IsMoveInput ? PlayerController.acceleration : deacceleration;
 
             forwardSpeed = Mathf.MoveTowards(
                 forwardSpeed,

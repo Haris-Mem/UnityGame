@@ -6,6 +6,6 @@ namespace RpgAdv
     public class QuestGiver : MonoBehaviour
     {
         public Quest quest;
-        //public Dialog dialog;
+        public Dialog dialog;
     }
 }
