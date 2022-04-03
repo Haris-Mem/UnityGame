@@ -13,7 +13,9 @@ namespace RpgAdv
 
     public interface IMessageReceiver
     {
-        void OnReceiveMessage(MessageType type);
+        void OnReceiveMessage(MessageType type, 
+        object sender, 
+        object msg);
     }
 }
 

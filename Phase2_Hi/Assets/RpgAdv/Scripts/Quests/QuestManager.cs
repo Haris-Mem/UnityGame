@@ -21,16 +21,17 @@ namespace RpgAdv
             return wrapper.array;
         }
     }
-    
-    public class QuestManager : MonoBehaviour
+
+    public class QuestManager : MonoBehaviour, IMessageReceiver
     {
         public Quest[] quests;
-        
+
         private void Awake()
         {
             LoadQuestsFromDB();
             AssignQuests();
         }
+
         private void LoadQuestsFromDB()
         {
             using StreamReader reader = new StreamReader("Assets/RpgAdv/DB/QuestDB.json");
@@ -39,7 +40,7 @@ namespace RpgAdv
             quests = new Quest[loadedQuests.Length];
             quests = loadedQuests;
         }
-        
+
         private void AssignQuests()
         {
             var questGivers = FindObjectsOfType<QuestGiver>();
@@ -52,7 +53,7 @@ namespace RpgAdv
                 }
             }
         }
-        
+
         private void AssignQuestTo(QuestGiver questGiver)
         {
             foreach (var quest in quests)
@@ -63,6 +64,41 @@ namespace RpgAdv
                 }
             }
         }
-        
+
+        public void OnReceiveMessage(MessageType type, object sender, object msg)
+        {
+            if (type == MessageType.DEAD)
+            {
+                CheckQuestWhenEnemyDead((Damageable)sender,(Damageable.DamageMessage)msg);
+            }
+        }
+
+        private void CheckQuestWhenEnemyDead(Damageable sender, Damageable.DamageMessage msg)
+        {
+            var questLog = msg.damageSource.GetComponent<QuestLog>();
+            if (questLog == null)
+            {
+                return;
+            }
+
+            foreach (var quest in questLog.quests)
+            {
+                if (quest.status == QuestStatus.ACTIVE)
+                {
+                    if (quest.type == QuestType.HUNT && Array.Exists(quest.targets,
+                            (targetUid) => sender.GetComponent<UniqueId>().Uid == targetUid))
+                    {
+                        quest.amount -= 1;
+
+                        if (quest.amount == 0)
+                        {
+                            quest.status = QuestStatus.COMPLETED;
+                           // m_PlayerStats.GainExperience(quest.experience);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+    

@@ -73,7 +73,7 @@ namespace RpgAdv
             CheckIfNearBase();
         }
 
-        public void OnReceiveMessage(MessageType type)
+        public void OnReceiveMessage(MessageType type, object sender, object msg)
         {
             switch (type)
             {

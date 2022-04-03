@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 
@@ -8,18 +6,20 @@ namespace RpgAdv
     public class CameraController : MonoBehaviour
     {
         [SerializeField]
-         CinemachineFreeLook freeLookCamera;
-         public CinemachineFreeLook PlayerCam
-         {
-             get
-             {
-                 return freeLookCamera;
-             }
-         }
+        CinemachineFreeLook freeLookCamera;
 
-         // Update is called once per frame
+        public CinemachineFreeLook PlayerCam
+        {
+            get
+            {
+                return freeLookCamera;
+            }
+        }
+
+        // Update is called once per frame
         void Update()
         {
+
             if (Input.GetMouseButtonDown(1))
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = 400;
@@ -30,10 +30,7 @@ namespace RpgAdv
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = 0;
                 freeLookCamera.m_YAxis.m_MaxSpeed = 0;
-
             }
         }
     }
-
-    
 }

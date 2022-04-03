@@ -10,7 +10,7 @@ namespace RpgAdv
         {
             public MonoBehaviour damager;
             public int amount;
-            public Vector3 damageSource;
+            public GameObject damageSource;
         }
     }
 
