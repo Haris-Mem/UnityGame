@@ -1572,6 +1572,8 @@ GameObject:
   - component: {fileID: 1016038030}
   - component: {fileID: 1016038032}
   - component: {fileID: 2034393051}
+  - component: {fileID: 1073719250}
+  - component: {fileID: 1073719251}
   m_Layer: 0
   m_Name: Female A
   m_TagString: Untagged
@@ -1697,7 +1699,6 @@ MonoBehaviour:
   rotationSpeed: 5
   maxRotationSpeed: 1200
   minRotationSpeed: 800
-  gravity: 10
 --- !u!114 &1016038032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1710,6 +1711,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 474dcb42d092078429945bfa896ce4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayerControllerInputBlocked: 0
+  distanceToInteractWithNpc: 2
 --- !u!114 &2034393051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1722,7 +1725,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa6e05ba95778548b39cd7fb88e1f81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAngle: 360
   maxHP: 200
+  onDamageMessageReceivers: []
+  invulnerabilityTime: 0.5
+--- !u!136 &1073719250
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253013051146282}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1073719251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253013051146282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092fa1e366cb33140b384bb5843b66e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests: []
 --- !u!1 &1257730882728438
 GameObject:
   m_ObjectHideFlags: 0

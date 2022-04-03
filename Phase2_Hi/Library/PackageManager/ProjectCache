@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637845371338619183
-    m_Hash: 2839277801
+      ticks: 637845377472648174
+    m_Hash: 4182565996
   m_LockFileStatus:
     m_FilePath: C:/Users/memon/Documents/GitHub/UnityGame/Phase2_Hi/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637845371463924542
-    m_Hash: 3924135083
+      ticks: 637845377472658177
+    m_Hash: 3232189066
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -254,6 +254,8 @@ m_PackageAssets:
         - 2.1.0-preview.5
         - 2.1.0-preview.6
         compatible:
+        - 1.15.7
+        - 1.15.9
         - 1.15.12
         - 1.15.13
         - 1.15.15
@@ -2921,6 +2923,8 @@ m_PackageAssets:
         - 1.1.0-pre.10
         - 1.1.0-pre.11
         - 1.1.0-pre.41
+        - 1.1.0-pre.69
+        - 1.2.0
         compatible:
         - 1.0.1
         - 1.1.0-pre.7
@@ -2929,6 +2933,8 @@ m_PackageAssets:
         - 1.1.0-pre.10
         - 1.1.0-pre.11
         - 1.1.0-pre.41
+        - 1.1.0-pre.69
+        - 1.2.0
         verified: 1.0.1
       dependencies:
       - name: com.unity.modules.unitywebrequest
@@ -2960,4 +2966,4 @@ m_PackageAssets:
   m_LocalPackages:
     m_LocalFileStatus: []
 m_ProjectPath: C:/Users/memon/Documents/GitHub/UnityGame/Phase2_Hi/Packages
-m_EditorVersion: 2020.3.30f1 (1fb1bf06830e)
+m_EditorVersion: 2020.3.28f1 (f5400f52e03f)

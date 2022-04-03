@@ -8,7 +8,7 @@
     "amount": 2,
     "targets": [
       "08cce553-053e-4d7a-809a-68b5900fd1aa",
-      "24755702-8208-46c7-86c1-2df399125fcf"
+      "2a71f278-8044-45c1-9897-25d66dc10977"
     ],
     "talkTo": null,
     "explore": null,
@@ -17,15 +17,15 @@
   },
   {
     "uid": "q-2",
-    "title": "Defeat the Bandits",
+    "title": "Defeat the Bandit Leader",
     "description": "Deafeat bandit leader located west of the town",
     "experience": 200,
     "gold": 15,
     "amount": 1,
-    "targets": [ "2a935acf-7120-434a-8f70-4e704f698185" ],
+    "targets": [ "9d3f9709-ad74-408f-88eb-3634bd228846" ],
     "talkTo": null,
     "explore": null,
-    "questGiver": "c3be459c-4bc8-4ed7-acbf-9fdf5d0ba999",
+    "questGiver": "to-be-specified",
     "type": 0
   }
 ]
