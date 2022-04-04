@@ -17,15 +17,18 @@ namespace RpgAdv
         }
 
         public bool IsRespawning { get { return m_IsRespawning; } }
-
+        private CharacterController con;
         public MeleeWeapon meleeWeapon;
         public float maxForwardSpeed = 8.0f;
         public float rotationSpeed;
         public float m_MaxRotationSpeed = 1200;
         public float m_MinRotationSpeed = 800;
-        public float gravity = 20.0f;
+       // public float gravity = 20.0f;
         public Transform attackHand;
         //public RandomAudioPlayer sprintAudio;
+        private float verticalVelocity;
+        private float gravity = 10.0f;
+        private float jumpForce = 15.0f;
 
         private static PlayerController s_Instance;
         private PlayerInput m_PlayerInput;
@@ -66,10 +69,27 @@ namespace RpgAdv
             m_CameraController = Camera.main.GetComponent<CameraController>();
             //m_HudManager = FindObjectOfType<HudManager>();
             s_Instance = this;
+            con = GetComponent<CharacterController>();
+            jumpCheck();
 
             //m_HudManager.SetMaxHealth(m_Damageable.maxHitPoints);
-        }
 
+        }
+        private void jumpCheck() {
+            if (con.isGrounded) {
+                verticalVelocity = -gravity * Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.Space)) {
+                    verticalVelocity = jumpForce;
+                }
+            }
+            else {
+                verticalVelocity -= gravity * Time.deltaTime;
+            }
+
+            Vector3 moveVector = new Vector3(0, verticalVelocity, 0);
+            con.Move(moveVector * Time.deltaTime);
+
+        }
         private void FixedUpdate()
         {
             CacheAnimationState();
