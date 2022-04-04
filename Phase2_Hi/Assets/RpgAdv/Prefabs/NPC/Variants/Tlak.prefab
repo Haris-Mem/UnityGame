@@ -90,11 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8323996902801673482, guid: c917e5b2862805143b1039f67c62f748, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.6026762
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8323996902801673482, guid: c917e5b2862805143b1039f67c62f748, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.31225395
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8323996902801673482, guid: c917e5b2862805143b1039f67c62f748, type: 3}
       propertyPath: m_LocalPosition.z
@@ -710,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8328272708348872982, guid: c917e5b2862805143b1039f67c62f748, type: 3}
       propertyPath: m_Name
-      value: Micheal
+      value: Tlak
       objectReference: {fileID: 0}
     - target: {fileID: 8328272708348872982, guid: c917e5b2862805143b1039f67c62f748, type: 3}
       propertyPath: m_Layer

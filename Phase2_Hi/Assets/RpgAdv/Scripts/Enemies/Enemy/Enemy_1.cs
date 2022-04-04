@@ -1,53 +1,57 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
 
 namespace RpgAdv
 {
-    public class Enemy_1 : MonoBehaviour, IMessageReceiver
+    public class Enemy_1 : MonoBehaviour, IMessageReceiver, IAttackAnimListener
     {
-
         public PlayerScanner playerScanner;
-        public float timeToStopPursuit = 0.5f;
+        public MeleeWeapon meleeWeapon;
+        public float timeToStopPursuit = 2.0f;
         public float timeToWaitOnPursuit = 2.0f;
         public float attackDistance = 1.1f;
+
         public bool HasFollowTarget
         {
             get
             {
-                return _FollowTarget != null;
+                return m_FollowTarget != null;
             }
         }
 
-        private PlayerController _FollowTarget;
+        private PlayerController m_FollowTarget;
         private EnemyController m_EnemyController;
-        
-      
-        private float TimeSinceLostTarget = 0;
-        private Vector3 originPosition;
-        private Quaternion originRotation;
-        
-        private readonly int HashInPursuit = Animator.StringToHash("InPursuit");
-        private readonly int HashNearBase = Animator.StringToHash("NearBase");
-        private readonly int HashAttack = Animator.StringToHash("Attack");
-        private readonly int HashHurt = Animator.StringToHash("Hurt");
-        private readonly int HashDead = Animator.StringToHash("Dead");
-        
+
+        private float m_TimeSinceLostTarget = 0;
+        private Vector3 m_OriginPosition;
+        private Quaternion m_OriginRotation;
+
+        private readonly int m_HashInPursuit = Animator.StringToHash("InPursuit");
+        private readonly int m_HashNearBase = Animator.StringToHash("NearBase");
+        private readonly int m_HashAttack = Animator.StringToHash("Attack");
+        private readonly int m_HashHurt = Animator.StringToHash("Hurt");
+        private readonly int m_HashDead = Animator.StringToHash("Dead");
 
         private void Awake()
         {
             m_EnemyController = GetComponent<EnemyController>();
-            originPosition = transform.position;
-            originRotation = transform.rotation;
+            m_OriginPosition = transform.position;
+            m_OriginRotation = transform.rotation;
+            meleeWeapon.SetOwner(gameObject);
+//            meleeWeapon.SetTargetLayer(1 << PlayerController.Instance.gameObject.layer);
         }
 
         private void Update()
         {
-           GuardPosition();
+            /*if (PlayerController.Instance.IsRespawning)
+            {
+                GoToOriginalSpot();
+                CheckIfNearBase();
+                return;
+            }*/
+
+            GuardPosition();
         }
 
         private void GuardPosition()
@@ -55,7 +59,7 @@ namespace RpgAdv
             var detectedTarget = playerScanner.Detect(transform);
             bool hasDetectedTarget = detectedTarget != null;
 
-            if (hasDetectedTarget) { _FollowTarget = detectedTarget; }
+            if (hasDetectedTarget) { m_FollowTarget = detectedTarget; }
 
             if (HasFollowTarget)
             {
@@ -63,13 +67,14 @@ namespace RpgAdv
 
                 if (hasDetectedTarget)
                 {
-                    TimeSinceLostTarget = 0;
+                    m_TimeSinceLostTarget = 0;
                 }
                 else
                 {
                     StopPursuit();
                 }
             }
+
             CheckIfNearBase();
         }
 
@@ -77,53 +82,67 @@ namespace RpgAdv
         {
             switch (type)
             {
-                case MessageType.DEAD :
-                    onDead();
+                case MessageType.DEAD:
+                    OnDead();
                     break;
-                
                 case MessageType.DAMAGED:
-                    onReceiveDamage();
+                    OnReceiveDamage();
                     break;
-                
                 default:
                     break;
             }
         }
 
-
-        private void onDead()
+        public void MeleeAttackStart()
         {
-            ScoreCheck.instance.addPoints();
+            meleeWeapon.BeginAttack();
+        }
+
+        public void MeleeAttackEnd()
+        {
+            meleeWeapon.EndAttack();
+        }
+
+        private void OnDead()
+        {
             m_EnemyController.StopFollowTarget();
-            m_EnemyController.animator.SetTrigger(HashDead);
+            m_EnemyController.Animator.SetTrigger(m_HashDead);
         }
 
-        private void onReceiveDamage() {
-            m_EnemyController.animator.SetTrigger(HashHurt);
-        }
-
-        private void AttackOrFollowTarget()
+        private void OnReceiveDamage()
         {
-            Vector3 toTarget = _FollowTarget.transform.position - transform.position;
-            if (toTarget.magnitude <= attackDistance)
-            {
-              AttackTarget(toTarget);
-            }
-            else
-            {
-                FollowTarget();
-            }
+            m_EnemyController.Animator.SetTrigger(m_HashHurt);
+        }
+
+        private void GoToOriginalSpot()
+        {
+            m_FollowTarget = null;
+            m_EnemyController.Animator.SetBool(m_HashInPursuit, false);
+            m_EnemyController.FollowTarget(m_OriginPosition);
         }
 
         private void StopPursuit()
         {
-            TimeSinceLostTarget += Time.deltaTime;
-                   
-            if (TimeSinceLostTarget >= timeToStopPursuit)
+            m_TimeSinceLostTarget += Time.deltaTime;
+
+            if (m_TimeSinceLostTarget >= timeToStopPursuit)
             {
-                _FollowTarget = null;
-                m_EnemyController.animator.SetBool(HashInPursuit,false);
+                m_FollowTarget = null;
+                m_EnemyController.Animator.SetBool(m_HashInPursuit, false);
                 StartCoroutine(WaitBeforeReturn());
+            }
+        }
+
+        private void AttackOrFollowTarget()
+        {
+            Vector3 toTarget = m_FollowTarget.transform.position - transform.position;
+            if (toTarget.magnitude <= attackDistance)
+            {
+                AttackTarget(toTarget);
+            }
+            else
+            {
+                FollowTarget();
             }
         }
 
@@ -133,31 +152,31 @@ namespace RpgAdv
             transform.rotation = Quaternion.RotateTowards(
                 transform.rotation,
                 toTargetRotation,
-                360 * Time.deltaTime); 
-                
+                360 * Time.deltaTime);
+
             m_EnemyController.StopFollowTarget();
-            m_EnemyController.animator.SetTrigger(HashAttack);
+            m_EnemyController.Animator.SetTrigger(m_HashAttack);
         }
 
         private void FollowTarget()
         {
-            m_EnemyController.animator.SetBool(HashInPursuit, true);
-            m_EnemyController.FollowTarget(_FollowTarget.transform.position);
+            m_EnemyController.Animator.SetBool(m_HashInPursuit, true);
+            m_EnemyController.FollowTarget(m_FollowTarget.transform.position);
         }
 
         private void CheckIfNearBase()
         {
-            Vector3 toBase = originPosition - transform.position;
+            Vector3 toBase = m_OriginPosition - transform.position;
             toBase.y = 0;
 
             bool nearBase = toBase.magnitude < 0.01f;
-            m_EnemyController.animator.SetBool(HashNearBase, nearBase);
+            m_EnemyController.Animator.SetBool(m_HashNearBase, nearBase);
 
             if (nearBase)
             {
                 Quaternion targetRotation = Quaternion.RotateTowards(
                     transform.rotation,
-                    originRotation,
+                    m_OriginRotation,
                     360 * Time.deltaTime);
 
                 transform.rotation = targetRotation;
@@ -167,13 +186,38 @@ namespace RpgAdv
         private IEnumerator WaitBeforeReturn()
         {
             yield return new WaitForSeconds(timeToWaitOnPursuit);
-     
-            m_EnemyController.FollowTarget(originPosition);
+            m_EnemyController.FollowTarget(m_OriginPosition);
         }
 
-   
 
-        
+#if UNITY_EDITOR
+        private void OnDrawGizmosSelected()
+        {
+            Color c = new Color(0.8f, 0, 0, 0.4f);
+            UnityEditor.Handles.color = c;
+
+            Vector3 rotatedForward = Quaternion.Euler(
+                0,
+                -playerScanner.detectionAngle * 0.5f,
+                0) * transform.forward;
+
+            UnityEditor.Handles.DrawSolidArc(
+                transform.position,
+                Vector3.up,
+                rotatedForward,
+                playerScanner.detectionAngle,
+                playerScanner.detectionRadius);
+
+
+            UnityEditor.Handles.DrawSolidArc(
+                transform.position,
+                Vector3.up,
+                rotatedForward,
+                360,
+                playerScanner.meleeDetectionRadius);
+
+        }
+#endif
+
     }
 }
-

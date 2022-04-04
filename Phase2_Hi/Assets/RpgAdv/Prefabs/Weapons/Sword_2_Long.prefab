@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6887145242564290530}
   - component: {fileID: 6887145242565584834}
   - component: {fileID: 6887145242566714626}
+  - component: {fileID: 4702296751427842133}
+  - component: {fileID: 5212884088013189842}
+  - component: {fileID: -7443025342298893841}
   m_Layer: 0
   m_Name: Sword_2_Long
   m_TagString: Untagged
@@ -25,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6887145242564721602}
-  m_LocalRotation: {x: -0.67541456, y: 0.12551582, z: -0.015406723, w: 0.72651476}
-  m_LocalPosition: {x: -1.1277547, y: 0.20237643, z: 172.15752}
+  m_LocalRotation: {x: -0.6754151, y: 0.1255169, z: -0.015404312, w: 0.7265141}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -77.831, y: 74.56, z: -65.578}
 --- !u!33 &6887145242565584834
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81,3 +84,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4702296751427842133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887145242564721602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ab76d39530b8041827b1aad812f2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toFollow: {fileID: 0}
+--- !u!114 &5212884088013189842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887145242564721602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36fb821238773484ab85c1aa30791750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 20
+  attackPoints:
+  - radius: 0.15
+    offset: {x: -0.18, y: 0.08, z: 0.61}
+    rootTransform: {fileID: 6887145242564290530}
+  - radius: 0.15
+    offset: {x: -0.14, y: 0.04, z: 0.37}
+    rootTransform: {fileID: 0}
+--- !u!114 &-7443025342298893841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887145242564721602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70559d7b906fc814c99b77936754f3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

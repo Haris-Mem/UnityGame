@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 8669608598336305476}
   - component: {fileID: 8669608598337272708}
   - component: {fileID: 9039253621068850598}
+  - component: {fileID: 2815249168990770074}
+  - component: {fileID: 3822199576782859616}
   m_Layer: 0
   m_Name: Sword_1
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8669608598339462468}
   m_LocalRotation: {x: -0.6754145, y: 0.12551591, z: -0.015406724, w: 0.7265147}
-  m_LocalPosition: {x: -1.6547362, y: 0.21118395, z: 172.31761}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,4 +96,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fb821238773484ab85c1aa30791750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  damage: 15
+  attackPoints:
+  - radius: 0.15
+    offset: {x: -0.18, y: 0.05, z: 0.61}
+    rootTransform: {fileID: 8669608598339696996}
+  - radius: 0.15
+    offset: {x: -0.14, y: 0.05, z: 0.37}
+    rootTransform: {fileID: 8669608598339696996}
+--- !u!114 &2815249168990770074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669608598339462468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ab76d39530b8041827b1aad812f2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toFollow: {fileID: 0}
+--- !u!114 &3822199576782859616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8669608598339462468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70559d7b906fc814c99b77936754f3b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1574,7 +1574,8 @@ GameObject:
   - component: {fileID: 2034393051}
   - component: {fileID: 1073719250}
   - component: {fileID: 1073719251}
-  m_Layer: 0
+  - component: {fileID: 1073719258}
+  m_Layer: 7
   m_Name: Female A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1694,11 +1695,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meleeWeapon: {fileID: 0}
-  speed: 15
   maxForwardSpeed: 8
   rotationSpeed: 5
-  maxRotationSpeed: 1200
-  minRotationSpeed: 800
+  m_MaxRotationSpeed: 1200
+  m_MinRotationSpeed: 800
+  gravity: 20
+  attackHand: {fileID: 4503322471713088}
 --- !u!114 &1016038032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,9 +1728,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAngle: 360
-  maxHP: 200
-  onDamageMessageReceivers: []
   invulnerabilityTime: 0.5
+  maxHitPoints: 0
+  experience: 0
+  playerActionReceivers:
+    serializedVersion: 2
+    m_Bits: 0
+  onDamageMessageReceivers:
+  - {fileID: 1016038030}
 --- !u!136 &1073719250
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1756,6 +1763,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quests: []
+--- !u!114 &1073719258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253013051146282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03cf42480b4f42f44847c2a6e6792786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLevel: 60
+  currentLevel: 0
+  currentExp: 0
+  availableLevels: 
 --- !u!1 &1257730882728438
 GameObject:
   m_ObjectHideFlags: 0

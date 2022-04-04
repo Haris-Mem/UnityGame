@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System;
-using System.Xml;
 
 namespace RpgAdv
 {
+
     public class JsonHelper
     {
         private class Wrapper<T>
@@ -22,14 +22,18 @@ namespace RpgAdv
         }
     }
 
+
     public class QuestManager : MonoBehaviour, IMessageReceiver
     {
         public Quest[] quests;
+        private PlayerStats m_PlayerStats;
 
         private void Awake()
         {
             LoadQuestsFromDB();
             AssignQuests();
+
+            m_PlayerStats = FindObjectOfType<PlayerStats>();
         }
 
         private void LoadQuestsFromDB()
@@ -69,31 +73,28 @@ namespace RpgAdv
         {
             if (type == MessageType.DEAD)
             {
-                CheckQuestWhenEnemyDead((Damageable)sender,(Damageable.DamageMessage)msg);
+                CheckQuestWhenEnemyDead((Damageable)sender, (Damageable.DamageMessage)msg);
             }
         }
 
         private void CheckQuestWhenEnemyDead(Damageable sender, Damageable.DamageMessage msg)
         {
             var questLog = msg.damageSource.GetComponent<QuestLog>();
-            if (questLog == null)
-            {
-                return;
-            }
+            if (questLog == null) { return; }
 
             foreach (var quest in questLog.quests)
             {
                 if (quest.status == QuestStatus.ACTIVE)
                 {
                     if (quest.type == QuestType.HUNT && Array.Exists(quest.targets,
-                            (targetUid) => sender.GetComponent<UniqueId>().Uid == targetUid))
+                        (targetUid) => sender.GetComponent<UniqueId>().Uid == targetUid))
                     {
                         quest.amount -= 1;
 
                         if (quest.amount == 0)
                         {
                             quest.status = QuestStatus.COMPLETED;
-                           // m_PlayerStats.GainExperience(quest.experience);
+                            m_PlayerStats.GainExperience(quest.experience);
                         }
                     }
                 }
@@ -101,4 +102,3 @@ namespace RpgAdv
         }
     }
 }
-    
