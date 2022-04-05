@@ -30,13 +30,14 @@ namespace RpgAdv
         private float gravity = 10.0f;
         private float jumpForce = 15.0f;
 
+       
         private static PlayerController s_Instance;
         private PlayerInput m_PlayerInput;
         private Damageable m_Damageable;
         private CharacterController m_ChController;
         private Animator m_Animator;
         private CameraController m_CameraController;
-        //private HudManager m_HudManager;
+        private HudManager m_HudManager;
         private Quaternion m_TargetRotation;
 
         private AnimatorStateInfo m_CurrentStateInfo;
@@ -67,12 +68,13 @@ namespace RpgAdv
             m_Animator = GetComponent<Animator>();
             m_Damageable = GetComponent<Damageable>();
             m_CameraController = Camera.main.GetComponent<CameraController>();
-            //m_HudManager = FindObjectOfType<HudManager>();
+            m_HudManager = FindObjectOfType<HudManager>();
             s_Instance = this;
             con = GetComponent<CharacterController>();
             jumpCheck();
 
-            //m_HudManager.SetMaxHealth(m_Damageable.maxHitPoints);
+            m_HudManager.SetMaxHealth(m_Damageable.maxHitPoints);
+          
 
         }
         private void jumpCheck() {
@@ -114,7 +116,8 @@ namespace RpgAdv
             {
                 m_Animator.SetTrigger(m_HashMeleeAttack);
             }
-            
+            jumpCheck();
+
         }
 
         private void OnAnimatorMove()
@@ -130,7 +133,9 @@ namespace RpgAdv
         {
             if (type == MessageType.DAMAGED)
             {
-                //m_HudManager.SetHealth((sender as Damageable).CurrentHitPoints);
+                m_HudManager.SetHealth((sender as Damageable).CurrentHitPoints);
+              
+                
             }
 
             if (type == MessageType.DEAD)
