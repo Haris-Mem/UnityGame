@@ -44,12 +44,12 @@ namespace RpgAdv
 
         private void Update()
         {
-            /*if (PlayerController.Instance.IsRespawning)
+            if (PlayerController.Instance.IsRespawning)
             {
                 GoToOriginalSpot();
                 CheckIfNearBase();
                 return;
-            }*/
+            }
 
             GuardPosition();
         }

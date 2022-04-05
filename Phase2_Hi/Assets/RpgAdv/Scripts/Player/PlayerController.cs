@@ -40,6 +40,8 @@ namespace RpgAdv
         private HudManager m_HudManager;
         private Quaternion m_TargetRotation;
 
+        
+
         private AnimatorStateInfo m_CurrentStateInfo;
         private AnimatorStateInfo m_NextStateInfo;
         private bool m_IsAnimatorTransitioning;
@@ -52,8 +54,9 @@ namespace RpgAdv
         // Animator Parameter Hashes
         private readonly int m_HashForwardSpeed = Animator.StringToHash("ForwardSpeed");
         private readonly int m_HashMeleeAttack = Animator.StringToHash("MeleeAttack");
-        private readonly int m_HashDeath = Animator.StringToHash("Death");
+        //private readonly int m_HashDeath = Animator.StringToHash("Death");
         private readonly int m_HashFootFall = Animator.StringToHash("FootFall");
+        private readonly int m_HashDeath = Animator.StringToHash("Death");
 
         // Animator Tag Hashes
         private readonly int m_HashBlockInput = Animator.StringToHash("BlockInput");
@@ -136,6 +139,7 @@ namespace RpgAdv
                 Debug.Log("recieving Damage");
                 m_HudManager.SetHealth((sender as Damageable).CurrentHitPoints);
             }
+            
 
             if (type == MessageType.DEAD)
             {
