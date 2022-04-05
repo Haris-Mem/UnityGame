@@ -101,6 +101,7 @@ namespace RpgAdv
 
         public void BeginAttack()
         {
+            Debug.Log("begining attack");
             //swingAudio.PlayRandomClip();
             m_IsAttack = true;
             m_OriginAttackPos = new Vector3[attackPoints.Length];
@@ -115,6 +116,7 @@ namespace RpgAdv
 
         public void EndAttack()
         {
+            Debug.Log("ending attack");
             m_IsAttack = false;
         }
 

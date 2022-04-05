@@ -133,16 +133,15 @@ namespace RpgAdv
         {
             if (type == MessageType.DAMAGED)
             {
+                Debug.Log("recieving Damage");
                 m_HudManager.SetHealth((sender as Damageable).CurrentHitPoints);
-              
-                
             }
 
             if (type == MessageType.DEAD)
             {
                 m_IsRespawning = true;
                 m_Animator.SetTrigger(m_HashDeath);
-                //m_HudManager.SetHealth(0);
+                m_HudManager.SetHealth(0);
             }
         }
 
@@ -165,7 +164,7 @@ namespace RpgAdv
         public void StartRespawn()
         {
             transform.position = Vector3.zero;
-            //m_HudManager.SetHealth(m_Damageable.maxHitPoints);
+            m_HudManager.SetHealth(m_Damageable.maxHitPoints);
             m_Damageable.SetInitialHealth();
         }
 

@@ -1575,6 +1575,7 @@ GameObject:
   - component: {fileID: 1073719250}
   - component: {fileID: 1073719251}
   - component: {fileID: 1073719258}
+  - component: {fileID: 8302762711459828586}
   m_Layer: 7
   m_Name: Female A
   m_TagString: Untagged
@@ -1699,7 +1700,6 @@ MonoBehaviour:
   rotationSpeed: 5
   m_MaxRotationSpeed: 1200
   m_MinRotationSpeed: 800
-  gravity: 20
   attackHand: {fileID: 4503322471713088}
 --- !u!114 &1016038032
 MonoBehaviour:
@@ -1729,7 +1729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitAngle: 360
   invulnerabilityTime: 0.5
-  maxHitPoints: 0
+  maxHitPoints: 100
   experience: 0
   playerActionReceivers:
     serializedVersion: 2
@@ -1779,6 +1779,19 @@ MonoBehaviour:
   currentLevel: 0
   currentExp: 0
   availableLevels: 
+--- !u!114 &8302762711459828586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253013051146282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9e5fb77bf174820bb9ed008dabaf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1253013051146282}
 --- !u!1 &1257730882728438
 GameObject:
   m_ObjectHideFlags: 0

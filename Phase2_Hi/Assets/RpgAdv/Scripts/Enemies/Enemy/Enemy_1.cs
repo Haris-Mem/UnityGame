@@ -39,7 +39,7 @@ namespace RpgAdv
             m_OriginPosition = transform.position;
             m_OriginRotation = transform.rotation;
             meleeWeapon.SetOwner(gameObject);
-//          meleeWeapon.SetTargetLayer(1 << PlayerController.Instance.gameObject.layer);
+            meleeWeapon.SetTargetLayer(1 << PlayerController.Instance.gameObject.layer);
         }
 
         private void Update()
@@ -95,11 +95,13 @@ namespace RpgAdv
 
         public void MeleeAttackStart()
         {
+            Debug.Log("begining attack");
             meleeWeapon.BeginAttack();
         }
 
         public void MeleeAttackEnd()
         {
+            Debug.Log("ending attack");
             meleeWeapon.EndAttack();
         }
 
