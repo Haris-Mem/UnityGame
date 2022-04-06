@@ -93,7 +93,7 @@ namespace RpgAdv
             }
         }
 
-        public void MeleeAttackStart()
+        public void MeleeAttackStart() //The enemy starts attacking enemy
         {
             Debug.Log("begining attack");
             meleeWeapon.BeginAttack();
@@ -105,13 +105,13 @@ namespace RpgAdv
             meleeWeapon.EndAttack();
         }
 
-        private void OnDead()
+        private void OnDead() //When enemy dies, it will fall down and stop attacking player. Also the animation changes.
         {
             m_EnemyController.StopFollowTarget();
             m_EnemyController.Animator.SetTrigger(m_HashDead);
         }
 
-        private void OnReceiveDamage()
+        private void OnReceiveDamage() //When enemy receives damage, the hurt animation shows
         {
             m_EnemyController.Animator.SetTrigger(m_HashHurt);
         }
