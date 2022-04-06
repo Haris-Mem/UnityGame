@@ -63,5 +63,10 @@ namespace RpgAdv
                 currentExp += gainedExp;
             }
         }
+
+        public int getLevel()
+        {
+            return currentLevel;
+        }
     }
 }

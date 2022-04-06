@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
+using RpgAdv;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static ScoreManager instance;
 
-    public Text scoreText;
+    public PlayerStats _playerStats;
+    public Text levelText;
     
     
     // Start is called before the first frame update
@@ -20,6 +21,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        levelText.text = "Current Level: " + _playerStats.getLevel();
     }
 }
