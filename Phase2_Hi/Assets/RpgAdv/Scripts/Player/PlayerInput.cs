@@ -7,6 +7,7 @@ namespace RpgAdv
 {
     public class PlayerInput : MonoBehaviour
     {
+    // variable delcarations 
         public static PlayerInput Instance { get { return s_Instance; } }
         public bool isPlayerControllerInputBlocked;
         public float distanceToInteractWithNpc = 2.0f;
@@ -15,7 +16,7 @@ namespace RpgAdv
         private Vector3 m_Movement;
         private bool m_IsAttack;
         private Collider m_OptionClickTarget;
-
+// properties
         public Collider OptionClickTarget { get { return m_OptionClickTarget; } }
         public Vector3 MoveInput
         {
@@ -65,7 +66,7 @@ namespace RpgAdv
                 HandleRightMouseBtnDown();
             }
         }
-
+// method that will trigger attack 
         private void HandleLeftMouseBtnDown()
         {
             if (!m_IsAttack && !IsPointerOverUiElement())
@@ -86,7 +87,7 @@ namespace RpgAdv
 
             return results.Count > 0;
         }
-
+// right mouse click handler
         private void HandleRightMouseBtnDown()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
