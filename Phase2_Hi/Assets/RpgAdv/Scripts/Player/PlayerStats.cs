@@ -25,7 +25,7 @@ namespace RpgAdv
             ComputeLevels(maxLevel);
         }
 
-        private void ComputeLevels(int levelCount)
+        private void ComputeLevels(int levelCount) // computes current level
         {
             for (int i = 0; i < levelCount; i++)
             {
@@ -44,7 +44,7 @@ namespace RpgAdv
             }
         }
 
-        public void GainExperience(int gainedExp)
+        public void GainExperience(int gainedExp) //used to gain experience - aka level
         {
             if (gainedExp > ExperienceToNextLevel)
             {
@@ -64,7 +64,7 @@ namespace RpgAdv
             }
         }
 
-        public int getLevel()
+        public int getLevel() // gets current level
         {
             return currentLevel;
         }
