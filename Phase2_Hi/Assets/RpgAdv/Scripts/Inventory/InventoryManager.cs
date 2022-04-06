@@ -18,12 +18,12 @@ namespace RpgAdv
             CreateInventory(m_InventorySize);
         }
 
-        public void OnItemPickup(ItemSpawner spawner)
+        public void OnItemPickup(ItemSpawner spawner) //pick up item
         {
             AddItemFrom(spawner);
         }
 
-        private void CreateInventory(int size)
+        private void CreateInventory(int size) //create inventory
         {
             for (int i = 0; i < size; i++)
             {
@@ -52,7 +52,7 @@ namespace RpgAdv
             PlayerController.Instance.UseItemFrom(inventorySlot);
         }
 
-        private void AddItemFrom(ItemSpawner spawner)
+        private void AddItemFrom(ItemSpawner spawner) //add item into slot
         {
             var inventorySlot = GetFreeSlot();
             if (inventorySlot == null) { return; }
