@@ -8,6 +8,7 @@ namespace RpgAdv
 {
     public class PlayerController : MonoBehaviour, IAttackAnimListener, IMessageReceiver
     {
+    //property
         public static PlayerController Instance
         {
             get
@@ -16,6 +17,7 @@ namespace RpgAdv
             }
         }
 
+// variable declarations
         public bool IsRespawning { get { return m_IsRespawning; } }
         private CharacterController con;
         public MeleeWeapon meleeWeapon;
@@ -64,6 +66,7 @@ namespace RpgAdv
         const float k_Acceleration = 20.0f;
         const float k_Deceleration = 35.0f;
 
+// awake method runs at start of scene
         private void Awake()
         {
             m_ChController = GetComponent<CharacterController>();
@@ -80,6 +83,7 @@ namespace RpgAdv
           
 
         }
+        // allows character to jump when space is pressed.
         private void jumpCheck() {
             if (con.isGrounded) {
                 verticalVelocity = -gravity * Time.deltaTime;
@@ -95,6 +99,8 @@ namespace RpgAdv
             con.Move(moveVector * Time.deltaTime);
 
         }
+        
+        // runs every frame 
         private void FixedUpdate()
         {
             CacheAnimationState();
@@ -122,7 +128,6 @@ namespace RpgAdv
             jumpCheck();
 
         }
-
         private void OnAnimatorMove()
         {
             if (m_IsRespawning) { return; }
@@ -149,6 +154,7 @@ namespace RpgAdv
             }
         }
 
+// start melee attack
         public void MeleeAttackStart()
         {
             if (meleeWeapon != null)
@@ -156,7 +162,8 @@ namespace RpgAdv
                 meleeWeapon.BeginAttack();
             }
         }
-
+        
+// end melee attack
         public void MeleeAttackEnd()
         {
             if (meleeWeapon != null)
@@ -165,13 +172,14 @@ namespace RpgAdv
             }
         }
 
+// start respawn
         public void StartRespawn()
         {
             transform.position = Vector3.zero;
             m_HudManager.SetHealth(m_Damageable.maxHitPoints);
             m_Damageable.SetInitialHealth();
         }
-
+// finish respawn
         public void FinishRespawn()
         {
             m_IsRespawning = false;
@@ -194,12 +202,12 @@ namespace RpgAdv
             meleeWeapon.name = slot.itemPrefab.name;
             meleeWeapon.SetOwner(gameObject);
         }
-
+// compute the veritcal movement
         private void ComputeVerticalMovement()
         {
             m_VerticalSpeed = -gravity;
         }
-
+// compute the forward movement
         private void ComputeForwardMovement()
         {
             Vector3 moveInput = m_PlayerInput.MoveInput.normalized;
@@ -215,7 +223,7 @@ namespace RpgAdv
 
             m_Animator.SetFloat(m_HashForwardSpeed, m_ForwardSpeed);
         }
-
+// compute the rotation
         private void ComputeRotation()
         {
             Vector3 moveInput = m_PlayerInput.MoveInput.normalized;

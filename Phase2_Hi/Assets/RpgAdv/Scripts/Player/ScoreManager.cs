@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update() // This is the current level of the player, the level changes when the player kills an enemy
     {
         levelText.text = "Current Level: " + _playerStats.getLevel();
     }
