@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     public Text levelText;
     
     
-    // Start is called before the first frame update
+    // Start is called before the first frame update.
     void Start()
     {
         
